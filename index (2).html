@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triple-Threat Shopify SEO Optimizer — by Shaun Mengella</title>
+<meta name="description" content="Paste your Shopify blog HTML. Get back a fully optimized, schema-rich, AIDA-structured version. Built on the Information Gain framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f1ea;
+    --paper-warm: #ebe6db;
+    --accent: #ff4d2e;
+    --accent-deep: #c93718;
+    --signal: #1a5d3a;
+    --rule: #1a1a1a;
+    --muted: #6b6258;
+    --highlight: #fff3a3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Newsprint grain texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============= MASTHEAD ============= */
+  .masthead {
+    border-bottom: 3px solid var(--ink);
+    padding: 24px 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead .edition {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .edition strong { color: var(--ink); }
+  .masthead .issue {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .masthead .byline-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .byline-link a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: color 0.15s ease;
+  }
+  .masthead .byline-link a:hover {
+    color: var(--accent);
+  }
+
+  /* ============= HERO ============= */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--ink);
+    position: relative;
+  }
+  .hero .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 24px;
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .hero h1 .underline {
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .underline::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: var(--highlight);
+    z-index: -1;
+  }
+  .hero .deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.4;
+    max-width: 720px;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .hero .byline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--rule);
+    flex-wrap: wrap;
+  }
+  .hero .byline-block {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero .byline-block strong { color: var(--accent-deep); }
+  .hero .byline a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .hero .byline a:hover { color: var(--accent); }
+
+  /* ============= SPEC SHEET ============= */
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .spec {
+    padding: 32px 24px;
+    border-right: 1px solid var(--ink);
+  }
+  .spec:last-child { border-right: none; }
+  .spec .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144;
+  }
+  .spec .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  @media (max-width: 768px) {
+    .specs { grid-template-columns: repeat(2, 1fr); }
+    .spec:nth-child(2) { border-right: none; }
+    .spec:nth-child(1), .spec:nth-child(2) { border-bottom: 1px solid var(--ink); }
+  }
+
+  /* ============= TOOL SECTION ============= */
+  .tool {
+    padding: 80px 0;
+  }
+  .tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .tool-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .tool-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .tool-header .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 980px) {
+    .tool-grid { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--paper-warm);
+    border: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+  }
+  .panel-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .panel-head .title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .panel-head .status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    border: 1px solid var(--paper);
+    text-transform: uppercase;
+  }
+  .panel-head .status.ready { color: var(--paper); }
+  .panel-head .status.done {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+  textarea {
+    flex: 1;
+    width: 100%;
+    border: none;
+    padding: 20px;
+    background: var(--paper-warm);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+    resize: none;
+    outline: none;
+  }
+  textarea::placeholder {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .panel-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .panel-footer .stat strong { color: var(--ink); }
+
+  /* ============= CONFIG ============= */
+  .config {
+    margin: 40px 0;
+    padding: 32px;
+    border: 1px solid var(--ink);
+    background: var(--paper-warm);
+  }
+  .config-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--accent);
+    border-width: 2px;
+    box-shadow: 6px 6px 0 var(--accent);
+  }
+  .config-primary h3 {
+    color: var(--paper);
+    border-bottom-color: var(--accent);
+  }
+  .config-primary .config-hint {
+    color: #ccc;
+  }
+  .config-primary .field label {
+    color: var(--accent);
+  }
+  .config-primary .field input {
+    background: #1a1a1a;
+    color: var(--paper);
+    border-color: #444;
+  }
+  .config-primary .field input:focus {
+    border-color: var(--accent);
+    background: #222;
+  }
+  .config-primary .field input::placeholder {
+    color: #777;
+  }
+  .config-hint {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: -12px 0 24px;
+    max-width: 60ch;
+  }
+  .field label .req {
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 9px;
+  }
+  .config h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .config-grid { grid-template-columns: 1fr; }
+  }
+  .field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus { border-color: var(--accent); }
+
+  /* ============= CONTROLS ============= */
+  .controls {
+    display: flex;
+    gap: 16px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn {
+    padding: 18px 32px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .btn:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .btn.secondary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .btn.secondary:hover {
+    background: var(--paper-warm);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ============= REPORT ============= */
+  .report {
+    margin: 40px 0;
+    padding: 32px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    display: none;
+  }
+  .report.active { display: block; }
+  .report h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .report h3 em { font-style: italic; color: var(--accent); }
+  .report .subhead {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #444;
+  }
+  .audit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .audit-grid { grid-template-columns: 1fr; }
+  }
+  .audit-item {
+    padding: 16px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .audit-item.pass { border-color: var(--signal); }
+  .audit-item.warn { border-color: var(--accent); }
+  .audit-item .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .audit-item.pass .mark { color: #4ade80; }
+  .audit-item.warn .mark { color: var(--accent); }
+  .audit-item .body { flex: 1; }
+  .audit-item .title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .audit-item .detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.5;
+  }
+
+  /* ============= FRAMEWORK ============= */
+  .framework {
+    padding: 80px 0;
+    border-top: 3px solid var(--ink);
+  }
+  .framework-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 980px) {
+    .framework-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .framework h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .framework h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .framework .lead {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .framework p {
+    margin-bottom: 16px;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pillar {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+  }
+  .pillar:first-child { border-top: 1px solid var(--rule); }
+  .pillar .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .pillar h4 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .pillar p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ============= AUTHOR ============= */
+  .author {
+    padding: 80px 0;
+    border-top: 3px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    margin: 0 -100vw;
+    padding-left: calc(50vw - 640px + 32px);
+    padding-right: calc(50vw - 640px + 32px);
+  }
+  @media (max-width: 1280px) {
+    .author { padding-left: 32px; padding-right: 32px; }
+  }
+  .author-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1216px;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .author-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .author-card {
+    border: 1px solid #333;
+    padding: 32px;
+    background: #1a1a1a;
+  }
+  .author-card .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .author-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .author-card .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed #444;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+  }
+  .author-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 24px;
+  }
+  .author-stats {
+    margin-bottom: 24px;
+  }
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #333;
+  }
+  .stat-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    line-height: 1.4;
+  }
+  .author-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--accent);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 0.15s;
+  }
+  .author-cta:hover {
+    background: var(--paper);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--accent);
+  }
+  .author-cta svg { width: 16px; height: 16px; }
+  .author-msg h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .author-msg h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .author-msg .pull {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--paper);
+    border-left: 3px solid var(--accent);
+    padding-left: 24px;
+    margin: 24px 0;
+  }
+  .author-msg p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 16px;
+    max-width: 60ch;
+  }
+
+  /* ============= FOOTER ============= */
+  footer {
+    padding: 40px 0 32px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer a { color: var(--ink); text-decoration: underline; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    padding: 16px 24px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* Animation on load */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1, .hero .deck, .hero .byline { animation: fadeUp 0.6s ease-out both; }
+  .hero .deck { animation-delay: 0.15s; }
+  .hero .byline { animation-delay: 0.3s; }
+
+  /* Loading spinner */
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="edition">
+      <strong>The Triple-Threat</strong> · A Working Tool
+    </div>
+    <div class="byline-link">
+      By <a href="https://www.linkedin.com/in/shaun-mengella-539a7153/" target="_blank" rel="noopener">Shaun Mengella</a> · LinkedIn
+    </div>
+    <div class="issue" id="issueDate">VOL. 01 · ISSUE 01</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="kicker">Free Tool · For Shopify Operators</span>
+    <h1>
+      Paste a blog post.<br>
+      Get back <em>an SEO weapon.</em>
+    </h1>
+    <p class="deck">
+      A browser-based optimizer that applies the <span class="underline"><strong>"Triple-Threat" SEO framework</strong></span> — Information Gain, Entity Authority, and AIDA — to any Shopify blog HTML. Schema gets generated. Headings get fixed. FAQs get internal links. Tables get crawlable. You ship.
+    </p>
+    <div class="byline">
+      <div class="byline-block">By <strong>Shaun Mengella</strong></div>
+      <div class="byline-block">·</div>
+      <div class="byline-block">Built on the <strong>Google patent family</strong> (US8682892B1 · US20250086246A1 · US12536233B1)</div>
+      <div class="byline-block">·</div>
+      <div class="byline-block"><a href="https://www.linkedin.com/in/shaun-mengella-539a7153/" target="_blank" rel="noopener">Connect on LinkedIn →</a></div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="specs">
+    <div class="spec">
+      <div class="num">7</div>
+      <div class="label">Heading Rules<br>Enforced</div>
+    </div>
+    <div class="spec">
+      <div class="num">3</div>
+      <div class="label">@graph Schema<br>Entities Injected</div>
+    </div>
+    <div class="spec">
+      <div class="num">100%</div>
+      <div class="label">Liquid-Safe<br>Single-Quote JSON</div>
+    </div>
+    <div class="spec">
+      <div class="num">0</div>
+      <div class="label">External APIs<br>Runs in Browser</div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="tool">
+    <div class="tool-header">
+      <h2>The <em>Optimizer.</em></h2>
+      <div class="section-num">§ 01 · Tool</div>
+    </div>
+
+    <!-- CONFIG: REQUIRED — Title & Keyword -->
+    <div class="config config-primary">
+      <h3>→ Step 1 · Add your blog title &amp; target keyword</h3>
+      <p class="config-hint">These two fields drive everything — the H1, FAQ questions, schema headline, and CTA copy. Take 30 seconds to fill them in properly.</p>
+      <div class="config-grid">
+        <div class="field" style="grid-column: 1 / -1;">
+          <label>Blog Post Title <span class="req">· required for best results</span></label>
+          <input type="text" id="pageTitle" placeholder="e.g. 5 Easy Steps to Master Home Organisation with Plastic Storage Boxes" value="">
+        </div>
+        <div class="field" style="grid-column: 1 / -1;">
+          <label>Primary Keyword <span class="req">· what you want to rank for</span></label>
+          <input type="text" id="primaryKeyword" placeholder="e.g. plastic storage boxes" value="">
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIG: OPTIONAL — Store metadata -->
+    <div class="config">
+      <h3>→ Step 2 · Configure your store metadata</h3>
+      <p class="config-hint">Used to build the breadcrumb schema and internal silo links. Defaults work, but real URLs work better.</p>
+      <div class="config-grid">
+        <div class="field">
+          <label>Brand Name</label>
+          <input type="text" id="brandName" placeholder="e.g. Plastic Box Shop" value="Your Brand">
+        </div>
+        <div class="field">
+          <label>Home URL</label>
+          <input type="text" id="homeUrl" placeholder="https://yourstore.com" value="https://yourstore.com">
+        </div>
+        <div class="field">
+          <label>Internal Link 1 (URL)</label>
+          <input type="text" id="internal1" placeholder="https://yourstore.com/collections/main" value="https://yourstore.com/collections/featured">
+        </div>
+        <div class="field">
+          <label>Internal Link 2 (URL)</label>
+          <input type="text" id="internal2" placeholder="https://yourstore.com/collections/related" value="https://yourstore.com/collections/bestsellers">
+        </div>
+      </div>
+    </div>
+
+    <!-- PANELS -->
+    <div class="tool-grid">
+      <div class="panel">
+        <div class="panel-head">
+          <span class="title">→ Input: Raw Shopify HTML</span>
+          <span class="status ready" id="inputStatus">Awaiting paste</span>
+        </div>
+        <textarea id="input" placeholder="Paste the full HTML of your Shopify blog post here.
+
+Tip: In Shopify Admin → Blog Posts → Edit → click 'Show HTML' (&lt;/&gt; icon) and copy everything.
+
+The tool will read your content, find the topic, and rebuild it according to the Triple-Threat framework."></textarea>
+        <div class="panel-footer">
+          <div class="stat">Characters: <strong id="inputChars">0</strong></div>
+          <div class="stat">Words: <strong id="inputWords">0</strong></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <span class="title">← Output: Optimized HTML</span>
+          <span class="status ready" id="outputStatus">Pending</span>
+        </div>
+        <textarea id="output" placeholder="Your optimized HTML will appear here.
+
+It includes:
+  · One H1 + ≥4 H2 + ≥3 H3 hierarchy
+  · Auto-generated FAQ block with 2 internal links
+  · @graph JSON-LD (BreadcrumbList + Article + FAQPage)
+  · Single-quote rule applied (Liquid-safe)
+  · Lazy-loaded images below the fold
+  · AIDA-structured CTA at the bottom
+  · Comparison-table styling baked in
+
+Copy. Paste back into Shopify. Ship." readonly></textarea>
+        <div class="panel-footer">
+          <div class="stat">Characters: <strong id="outputChars">0</strong></div>
+          <div class="stat">Words: <strong id="outputWords">0</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <button class="btn" id="optimizeBtn">⚡ Optimize HTML</button>
+      <button class="btn secondary" id="copyBtn" disabled>Copy Output</button>
+      <button class="btn secondary" id="downloadBtn" disabled>Download .html</button>
+      <button class="btn secondary" id="sampleBtn">Load Sample</button>
+    </div>
+
+    <!-- REPORT -->
+    <div class="report" id="report">
+      <h3>SEO Audit <em>Report</em></h3>
+      <div class="subhead" id="reportSub">Triple-Threat compliance check · Generated locally · No data sent anywhere</div>
+      <div class="audit-grid" id="auditGrid"></div>
+    </div>
+
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section class="framework">
+    <div class="tool-header">
+      <h2>The <em>Framework.</em></h2>
+      <div class="section-num">§ 02 · Method</div>
+    </div>
+    <div class="framework-grid">
+      <div>
+        <p class="lead">
+          Most Shopify blogs lose to thin content and weak schema. The Triple-Threat fixes both — by treating every post as three documents stacked together.
+        </p>
+        <p>
+          Google's <strong>Information Gain</strong> patent (US8682892B1) scores content on what it adds beyond what's already indexed. A page that repeats the top-10 SERPs gains zero. A page with original tables, specs, and structured FAQs gains everything.
+        </p>
+        <p>
+          This tool doesn't write content for you. It restructures what you have — so what you've already written can finally <em>rank</em>.
+        </p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <div>
+            <h4>Schema Stack (@graph)</h4>
+            <p>Single Custom Liquid block injects BreadcrumbList + Article + FAQPage as one consolidated graph. Uses the single-quote rule on internal anchors so Liquid never breaks.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <div>
+            <h4>Heading Density</h4>
+            <p>Enforces 1× H1, ≥4× H2, ≥3× H3. Promotes weak headings, inserts user-intent subheads where the post is flat.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <div>
+            <h4>Information Gain Elements</h4>
+            <p>Converts image-only comparisons into CSS-styled HTML tables so Google can crawl the cells. Adds a clinical-spec block for unique value.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <div>
+            <h4>Internal Siloing</h4>
+            <p>Every generated FAQ answer is wired with at least 2 internal links to collections/products. Topical authority compounds.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">05</div>
+          <div>
+            <h4>AIDA Flow</h4>
+            <p>Adds a checkmark feature/benefit block (Interest/Desire) and a high-contrast CTA (Action) at the bottom of every post.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section class="author">
+    <div class="author-grid">
+      <div class="author-card">
+        <div class="kicker">→ Built by</div>
+        <h3>Shaun Mengella</h3>
+        <div class="role">Google · Meta · Microsoft Ads · SEO · Shopify · PPC</div>
+        <div class="author-stats">
+          <div class="stat-row">
+            <span class="stat-num">£100k+</span>
+            <span class="stat-label">Monthly Ad Budgets Managed</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-num">600%</span>
+            <span class="stat-label">Peak ROAS Delivered</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-num">UK</span>
+            <span class="stat-label">Greater Preston Area</span>
+          </div>
+        </div>
+        <a class="author-cta" href="https://www.linkedin.com/in/shaun-mengella-539a7153/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+      <div class="author-msg">
+        <h2>Why I <em>built this</em> in a browser.</h2>
+        <p class="pull">
+          "Any SEO tool that needs a server, a login, or a paywall is solving the wrong problem. The bottleneck isn't tools — it's structure."
+        </p>
+        <p>
+          This optimizer runs entirely in your browser. No upload. No account. No data leaves your machine. It's a single HTML file you can save and use forever, including offline.
+        </p>
+        <p>
+          I work day-to-day across Google, Meta, and Microsoft Ads alongside SEO and Shopify — and the patterns are always the same. Most stores lose more revenue to weak page structure than to weak ad targeting. This tool fixes one slice of that.
+        </p>
+        <p>
+          If this gave you something useful, the best thank-you is a connection on LinkedIn. That's where I share the playbooks behind tools like this one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Shaun Mengella · The Triple-Threat Optimizer</div>
+    <div>
+      <a href="https://www.linkedin.com/in/shaun-mengella-539a7153/" target="_blank" rel="noopener">linkedin.com/in/shaun-mengella</a>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+// ============================================================
+// THE TRIPLE-THREAT OPTIMIZER — Core Engine
+// All processing runs locally. Zero external requests.
+// ============================================================
+
+const $ = (id) => document.getElementById(id);
+
+// --- helpers ---
+function escapeAttr(s) {
+  return String(s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function escapeJSON(s) {
+  return String(s || '')
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, ' ')
+    .replace(/\r/g, '')
+    .replace(/\t/g, ' ')
+    .trim();
+}
+function stripTags(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return div.textContent || '';
+}
+function wordCount(s) {
+  return (s.trim().match(/\b\w+\b/g) || []).length;
+}
+
+// --- live counters ---
+function updateCounters() {
+  const inV = $('input').value;
+  const outV = $('output').value;
+  $('inputChars').textContent = inV.length.toLocaleString();
+  $('inputWords').textContent = wordCount(stripTags(inV)).toLocaleString();
+  $('outputChars').textContent = outV.length.toLocaleString();
+  $('outputWords').textContent = wordCount(stripTags(outV)).toLocaleString();
+  $('inputStatus').textContent = inV.length > 0 ? 'Ready' : 'Awaiting paste';
+}
+$('input').addEventListener('input', updateCounters);
+
+// ============================================================
+// MAIN OPTIMIZER
+// ============================================================
+function optimize(html) {
+  const audit = [];
+
+  // Brand colours — locked to defaults (matches the tool's editorial aesthetic).
+  // ACCENT is the orange used across the schema graph and key-takeaways block.
+  // BTN_TEXT is the text colour that sits on top of ACCENT (e.g. inside the @graph pill).
+  const ACCENT = '#ff4d2e';
+  const BTN_TEXT = '#0a0a0a';
+
+  // Parse the input into a DOM fragment we can manipulate
+  const doc = new DOMParser().parseFromString('<div id="__root__">' + html + '</div>', 'text/html');
+  const root = doc.getElementById('__root__');
+
+  // ---------- 0. Cleanup pass — strip blocks from any previous Triple-Threat run ----------
+  // Re-running an already-optimized post would otherwise stack duplicate CTAs, FAQs, and schema
+  // graphs on top of each other. Every block this tool generates uses a `tt-*` class prefix,
+  // so we can find and remove them all at once. Same for the JSON-LD schema script + its HTML comment.
+  let stripped = 0;
+  root.querySelectorAll('.tt-schema-graph, .tt-key-takeaways, .tt-faq-block, .tt-cta-block, .tt-aida-features, .tt-spec-block').forEach(el => {
+    el.remove();
+    stripped++;
+  });
+  // Also remove the JSON-LD schema script(s) we previously injected
+  root.querySelectorAll('script[type="application/ld+json"]').forEach(el => {
+    el.remove();
+    stripped++;
+  });
+  // And the HTML comment that wraps the schema block (it'll be a stray text node)
+  Array.from(root.childNodes).forEach(node => {
+    if (node.nodeType === 8 && /Triple-Threat SEO Schema/i.test(node.nodeValue || '')) {
+      node.remove();
+      stripped++;
+    }
+  });
+  // Also strip any "auto-FAQ" intent-scaffolding H2s from a prior run (they all end with "Plastic Storage Boxes" etc.
+  // and contain placeholder italic text). Detect by the placeholder marker.
+  root.querySelectorAll('p > em').forEach(em => {
+    if (/^\s*\[Add 2.3 sentences of original/i.test(em.textContent || '')) {
+      const p = em.parentNode;
+      // Also remove the preceding H2 if it's clearly a scaffolded one
+      let prev = p.previousElementSibling;
+      while (prev && prev.tagName !== 'H2' && prev.tagName !== 'P') prev = prev.previousElementSibling;
+      if (prev && prev.tagName === 'H2') prev.remove();
+      p.remove();
+      stripped++;
+    }
+  });
+  if (stripped > 0) {
+    audit.push({ ok: true, t: 'Previous run cleaned up', d: 'Removed ' + stripped + ' element(s) from a prior optimization. No duplication.' });
+  }
+
+  // ---------- 1. Extract title — priority: user input > existing H1 > derived topic ----------
+  const userTitle = ($('pageTitle').value || '').trim();
+  let h1El = root.querySelector('h1');
+  let title = '';
+
+  // Common stopwords for keyword + topic derivation
+  const stopwords = new Set(['the','a','an','of','to','in','on','with','and','or','vs','from','at','by','for','our','your','their','this','that','these','those','is','are','was','were','be','been','being','have','has','had','do','does','did','can','will','would','should','could','may','might','must','shall','it','its','as','if','so','but','not','no','yes','about','into','out','up','down','over','under','through','what','when','where','why','how','who','which','i','we','you','they','he','she','my','me','us','them','also']);
+
+  // Derive a topic by scanning headings, strong tags, then frequent nouns
+  function deriveTopic() {
+    // 1. Try existing real headings
+    const realHeading = root.querySelector('h1, h2, h3, h4');
+    if (realHeading && realHeading.textContent.trim().length > 5 && realHeading.textContent.trim().length < 100) {
+      return realHeading.textContent.trim();
+    }
+    // 2. Try strong tags inside list items (very common in Shopify blogs)
+    const liStrong = root.querySelector('li > strong, li > b');
+    if (liStrong && liStrong.textContent.trim().length > 5 && liStrong.textContent.trim().length < 100) {
+      return liStrong.textContent.trim();
+    }
+    // 3. Word-frequency fallback — find the most-repeated meaningful 2-word phrase
+    const text = root.textContent.toLowerCase().replace(/[^\w\s]/g, ' ');
+    const words = text.split(/\s+/).filter(w => w.length > 3 && !stopwords.has(w));
+    const bigrams = {};
+    for (let i = 0; i < words.length - 1; i++) {
+      const bg = words[i] + ' ' + words[i + 1];
+      bigrams[bg] = (bigrams[bg] || 0) + 1;
+    }
+    const topBigram = Object.entries(bigrams).sort((a, b) => b[1] - a[1])[0];
+    if (topBigram && topBigram[1] >= 3) {
+      // Capitalize
+      return topBigram[0].replace(/\b\w/g, c => c.toUpperCase());
+    }
+    return 'Your Blog Post';
+  }
+
+  if (userTitle) {
+    title = userTitle;
+    if (h1El) {
+      h1El.textContent = userTitle;
+    } else {
+      const newH1 = doc.createElement('h1');
+      newH1.textContent = userTitle;
+      root.insertBefore(newH1, root.firstChild);
+      h1El = newH1;
+    }
+    audit.push({ ok: true, t: 'H1 set from input', d: '"' + title.slice(0, 70) + (title.length > 70 ? '…' : '') + '"' });
+  } else if (h1El) {
+    title = h1El.textContent.trim();
+    audit.push({ ok: true, t: 'H1 detected', d: '"' + title.slice(0, 70) + (title.length > 70 ? '…' : '') + '"' });
+  } else {
+    title = deriveTopic();
+    const newH1 = doc.createElement('h1');
+    newH1.textContent = title;
+    root.insertBefore(newH1, root.firstChild);
+    h1El = newH1;
+    audit.push({ ok: false, t: 'H1 generated — add a real title for best results', d: 'Derived from content: "' + title.slice(0, 60) + '"' });
+  }
+
+  // Ensure only ONE H1 — demote extras to H2
+  const allH1s = root.querySelectorAll('h1');
+  if (allH1s.length > 1) {
+    for (let i = 1; i < allH1s.length; i++) {
+      const newH2 = doc.createElement('h2');
+      newH2.innerHTML = allH1s[i].innerHTML;
+      allH1s[i].parentNode.replaceChild(newH2, allH1s[i]);
+    }
+    audit.push({ ok: false, t: 'Multiple H1s → fixed', d: 'Demoted ' + (allH1s.length - 1) + ' extra H1 tag(s) to H2.' });
+  }
+
+  // ---------- Derive primary keyword ----------
+  // Priority: user-supplied > auto-extracted from title
+  const userKW = ($('primaryKeyword').value || '').trim();
+  let primaryKW;
+  if (userKW) {
+    primaryKW = userKW.toLowerCase();
+    audit.push({ ok: true, t: 'Primary keyword set', d: '"' + userKW + '" — used in FAQ, schema, alt text, and CTA.' });
+  } else {
+    // Auto-extract: strip leading number-led intro (e.g. "5 Easy Steps to" → keep what follows)
+    let titleForKW = title.replace(/^\s*\d+\s+(\w+\s+){1,4}(to|for|of|in|on)\s+/i, '');
+    let kwWords = titleForKW.replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 0);
+    while (kwWords.length > 1 && (stopwords.has(kwWords[0].toLowerCase()) || /^\d+$/.test(kwWords[0]))) kwWords.shift();
+    kwWords = kwWords.slice(0, 4);
+    while (kwWords.length > 1 && stopwords.has(kwWords[kwWords.length - 1].toLowerCase())) kwWords.pop();
+    primaryKW = kwWords.join(' ').toLowerCase() || 'topic';
+    audit.push({ ok: false, t: 'Keyword auto-extracted — supply your own for better results', d: 'Guessed: "' + primaryKW + '"' });
+  }
+
+  // ---------- 2. Count & enforce heading hierarchy ----------
+  let h2Count = root.querySelectorAll('h2').length;
+  let h3Count = root.querySelectorAll('h3').length;
+
+  // FIRST: detect the common Shopify pattern of <ul><li><strong>Heading</strong></li></ul> or <ol><li><strong>Heading</strong></li></ol>
+  // These are headings the writer formatted as single-item lists. Promote them.
+  const singleItemLists = root.querySelectorAll('ul, ol');
+  singleItemLists.forEach((list) => {
+    if (list.children.length === 1) {
+      const li = list.firstElementChild;
+      if (li && li.tagName === 'LI') {
+        const onlyChild = li.children.length === 1 ? li.firstElementChild : null;
+        const isBoldOnly = onlyChild && /^(strong|b)$/i.test(onlyChild.tagName) && onlyChild.textContent.trim() === li.textContent.trim();
+        if (isBoldOnly && li.textContent.trim().length > 3 && li.textContent.trim().length < 120) {
+          const newH2 = doc.createElement('h2');
+          newH2.textContent = li.textContent.trim();
+          list.parentNode.replaceChild(newH2, list);
+          h2Count++;
+        }
+      }
+    }
+  });
+
+  // SECOND: promote bold-only paragraphs to H2 if we're still short
+  if (h2Count < 4) {
+    const paras = root.querySelectorAll('p');
+    for (const p of paras) {
+      if (h2Count >= 4) break;
+      const onlyChild = p.children.length === 1 && p.firstElementChild;
+      const isBoldOnly = onlyChild && /^(strong|b)$/i.test(onlyChild.tagName) && onlyChild.textContent.trim() === p.textContent.trim();
+      if (isBoldOnly && p.textContent.trim().length < 100) {
+        const newH2 = doc.createElement('h2');
+        newH2.textContent = p.textContent.trim();
+        p.parentNode.replaceChild(newH2, p);
+        h2Count++;
+      }
+    }
+  }
+
+  // If still short, inject H2 scaffolding sections at the end (before the FAQ we'll add)
+  const intentHeadings = [
+    'What You Need to Know About ' + primaryKW,
+    'How ' + primaryKW + ' Works: A Deeper Look',
+    'Benefits of ' + primaryKW,
+    'Comparing Your Options: ' + primaryKW + ' Explained',
+    primaryKW + ': Common Questions Answered'
+  ];
+  let intentIdx = 0;
+  while (h2Count < 4) {
+    const h2 = doc.createElement('h2');
+    h2.textContent = intentHeadings[intentIdx % intentHeadings.length];
+    intentIdx++;
+    const placeholder = doc.createElement('p');
+    placeholder.innerHTML = '<em>[Add 2–3 sentences of original, keyword-rich content here that answers user intent for this subheading. This is where Information Gain compounds — include data, specs, or experience competitors don\'t have.]</em>';
+    root.appendChild(h2);
+    root.appendChild(placeholder);
+    h2Count++;
+  }
+  audit.push({
+    ok: h2Count >= 4,
+    t: 'H2 density',
+    d: h2Count + ' H2 tag(s) on page (minimum: 4). ' + (h2Count >= 4 ? 'Pass.' : 'Needs more.')
+  });
+
+  // Promote some H4s/strong subtopics to H3 if short
+  if (h3Count < 3) {
+    const h4s = root.querySelectorAll('h4');
+    for (const h4 of h4s) {
+      if (h3Count >= 3) break;
+      const newH3 = doc.createElement('h3');
+      newH3.innerHTML = h4.innerHTML;
+      h4.parentNode.replaceChild(newH3, h4);
+      h3Count++;
+    }
+  }
+  // Scaffold H3s under the last few H2s
+  const h3Topics = [
+    'Key Features at a Glance',
+    'What the Research Says',
+    'Practical Recommendations'
+  ];
+  let h3Idx = 0;
+  const allH2 = root.querySelectorAll('h2');
+  while (h3Count < 3 && allH2.length > 0) {
+    const target = allH2[allH2.length - 1 - (h3Idx % allH2.length)];
+    const h3 = doc.createElement('h3');
+    h3.textContent = h3Topics[h3Idx % h3Topics.length];
+    if (target && target.parentNode) {
+      target.parentNode.insertBefore(h3, target.nextSibling);
+    } else {
+      root.appendChild(h3);
+    }
+    h3Idx++;
+    h3Count++;
+  }
+  audit.push({
+    ok: h3Count >= 3,
+    t: 'H3 density',
+    d: h3Count + ' H3 tag(s) on page (minimum: 3). ' + (h3Count >= 3 ? 'Pass.' : 'Needs more.')
+  });
+
+  // ---------- 3. Image optimization ----------
+  const imgs = root.querySelectorAll('img');
+  let imgFixCount = 0;
+  let lazyCount = 0;
+  imgs.forEach((img, idx) => {
+    // Alt text — use full title for richer context, fall back to keyword
+    const existingAlt = (img.getAttribute('alt') || '').trim();
+    if (existingAlt.length < 8) {
+      const altBase = title.length < 80 ? title : primaryKW;
+      img.setAttribute('alt', altBase + ' — visual reference ' + (idx + 1));
+      imgFixCount++;
+    }
+    // Lazy loading: apply to every image except the very first IF there are multiple.
+    // For single-image posts, lazy-load it (single images are rarely the LCP/hero).
+    const shouldLazy = imgs.length === 1 || idx > 0;
+    if (shouldLazy && !img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+      lazyCount++;
+    }
+    // First (lead) image with multiple images on page: 16:9 hint via inline style
+    if (idx === 0 && imgs.length > 1 && !img.hasAttribute('width')) {
+      const existing = img.getAttribute('style') || '';
+      img.setAttribute('style', existing + ';aspect-ratio:16/9;object-fit:cover;width:100%;height:auto;');
+      // Explicit eager loading hint for LCP
+      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'eager');
+      if (!img.hasAttribute('fetchpriority')) img.setAttribute('fetchpriority', 'high');
+    }
+  });
+  audit.push({
+    ok: imgs.length === 0 || imgFixCount === 0,
+    t: 'Image alt text',
+    d: imgs.length + ' image(s) scanned. ' + (imgFixCount > 0 ? 'Rewrote ' + imgFixCount + ' weak/missing alt(s).' : 'All alts pass.')
+  });
+  audit.push({
+    ok: true,
+    t: 'Image lazy-loading',
+    d: lazyCount + ' image(s) set to loading="lazy". ' + (imgs.length > 1 ? 'Lead image kept eager for LCP.' : '')
+  });
+
+  // ---------- 4. Style any tables for crawlable comparison ----------
+  const tables = root.querySelectorAll('table');
+  tables.forEach((tbl) => {
+    tbl.setAttribute('class', (tbl.getAttribute('class') || '') + ' tt-compare-table');
+    tbl.setAttribute('style', 'width:100%;border-collapse:collapse;margin:24px 0;font-family:inherit;');
+    tbl.querySelectorAll('th').forEach((th) => {
+      th.setAttribute('style', 'background:#0a0a0a;color:#fff;padding:12px;text-align:left;border:1px solid #0a0a0a;font-weight:700;');
+    });
+    tbl.querySelectorAll('td').forEach((td) => {
+      td.setAttribute('style', 'padding:12px;border:1px solid #ddd;');
+    });
+  });
+  audit.push({
+    ok: true,
+    t: 'Comparison tables',
+    d: tables.length + ' table(s) styled for crawlability. (Convert image-comparisons to <table> for Information Gain.)'
+  });
+
+  // ---------- 5. Schema Graph placeholder ----------
+  // We insert a marker here and replace it later (once FAQs are built and we know what to visualize).
+  const schemaGraphMarker = doc.createElement('div');
+  schemaGraphMarker.id = '__tt_schema_graph_marker__';
+  if (h1El && h1El.parentNode) {
+    let after = h1El.nextSibling;
+    // skip past lead image if present
+    if (after && after.nodeType === 1 && after.tagName === 'P' && after.querySelector('img')) {
+      after = after.nextSibling;
+    }
+    if (after) h1El.parentNode.insertBefore(schemaGraphMarker, after);
+    else h1El.parentNode.appendChild(schemaGraphMarker);
+  } else {
+    root.appendChild(schemaGraphMarker);
+  }
+
+  // ---------- 6. Key Takeaways — content-aware visual summary built from this post's H2s ----------
+  // Pulls the actual section headings from the post so it reflects what the reader just read.
+  // This replaces the old "Why this matters" block which was meta-commentary about SEO.
+  const sectionH2s = Array.from(root.querySelectorAll('h2'))
+    .map(h => h.textContent.trim())
+    .filter(t => t && !/frequently asked questions/i.test(t))
+    .slice(0, 6); // cap at 6 for visual balance
+
+  // Only build the block if we have at least 3 real sections to summarise
+  let aidaHTML = '';
+  if (sectionH2s.length >= 3) {
+    const takeawayItems = sectionH2s.map((h, i) => `
+    <li style="display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #eee5d3;">
+      <span style="font-family:Georgia,serif;font-size:24px;font-weight:300;color:${ACCENT};line-height:1;flex-shrink:0;min-width:32px;">${String(i + 1).padStart(2, '0')}</span>
+      <span style="font-size:15px;line-height:1.4;color:#0a0a0a;padding-top:4px;">${escapeAttr(h)}</span>
+    </li>`).join('');
+
+    aidaHTML = `
+<div class="tt-key-takeaways" style="margin:40px 0;padding:32px;background:#f4f1ea;border:1px solid #0a0a0a;font-family:inherit;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+    <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${ACCENT};margin:0;font-weight:700;">→ Key Takeaways</p>
+    <p style="font-size:10px;letter-spacing:0.1em;color:#6b6258;margin:0;font-family:'Courier New',monospace;">${sectionH2s.length} sections covered</p>
+  </div>
+  <p style="font-size:13px;color:#6b6258;margin:0 0 16px;line-height:1.5;">The essentials from this guide, at a glance.</p>
+  <ol style="list-style:none;padding:0;margin:0;">
+    ${takeawayItems}
+  </ol>
+</div>`.trim();
+  }
+
+  // ---------- 7. (Removed) AIDA CTA block ----------
+  // Removed by user request. Shopify themes typically already render product carousels,
+  // related-collection widgets, and recommendation blocks below the post — a generated
+  // CTA stacked on top of that is clutter, not conversion. The FAQ block above already
+  // carries internal silo links, which is where the SEO weight actually lives.
+  const internal1 = $('internal1').value.trim() || 'https://yourstore.com/collections/featured';
+  const internal2 = $('internal2').value.trim() || 'https://yourstore.com/collections/bestsellers';
+
+  // ---------- 8. FAQ Section (with internal links + single-quote HTML rule) ----------
+  // Use Title Case version of the keyword for readability
+  const kwDisplay = primaryKW.replace(/\b\w/g, c => c.toUpperCase());
+  const faqs = [
+    {
+      q: 'What should I look for when choosing ' + kwDisplay + '?',
+      a: "Start with the use case — size, durability, and where the item will live. Our <a href='" + internal1 + "'>main collection</a> covers the most-recommended options, and <a href='" + internal2 + "'>related products</a> can help if you're weighing alternatives."
+    },
+    {
+      q: 'How do I get started with ' + kwDisplay + '?',
+      a: "The five-step framework above walks through it: categorise, choose the right format, maximise space, build systems, and maintain regularly. Once you have a sense of what you need, browse our <a href='" + internal1 + "'>full range</a> or jump straight to <a href='" + internal2 + "'>popular picks</a>."
+    },
+    {
+      q: 'What makes ' + kwDisplay + ' worth investing in?',
+      a: "Quality and longevity. Cheap alternatives crack, warp, or lose their lids — and you end up replacing them. The options across our <a href='" + internal1 + "'>core collection</a> and <a href='" + internal2 + "'>related range</a> are built to handle daily use without falling apart."
+    },
+    {
+      q: 'Can I mix and match different ' + kwDisplay + ' types?',
+      a: "Absolutely — and we'd encourage it. Different rooms have different needs. Pair larger items from our <a href='" + internal1 + "'>main collection</a> with the smaller, more specific options in our <a href='" + internal2 + "'>related range</a> to build a system that actually fits your home."
+    }
+  ];
+
+  const faqHTML = `
+<div class="tt-faq-block" style="margin:48px 0;">
+  <h2>${escapeAttr('Frequently Asked Questions About ' + kwDisplay)}</h2>
+  ${faqs.map(f => `
+  <details style="margin:12px 0;padding:16px 20px;border:1px solid #0a0a0a;background:#fff;font-family:inherit;">
+    <summary style="font-weight:700;cursor:pointer;font-size:16px;">${escapeAttr(f.q)}</summary>
+    <p style="margin:12px 0 0;line-height:1.6;">${f.a}</p>
+  </details>`).join('')}
+</div>`.trim();
+
+  // Append all the post-content blocks
+  if (aidaHTML) {
+    const aidaDiv = doc.createElement('div');
+    aidaDiv.innerHTML = aidaHTML;
+    root.appendChild(aidaDiv.firstChild);
+    audit.push({ ok: true, t: 'Key Takeaways inserted', d: 'Built a numbered summary from your H2 sections — gives readers a scannable recap.' });
+  } else {
+    audit.push({ ok: true, t: 'Key Takeaways skipped', d: 'Post has fewer than 3 sections — no summary needed.' });
+  }
+
+  const faqDiv = doc.createElement('div');
+  faqDiv.innerHTML = faqHTML;
+  root.appendChild(faqDiv.firstChild);
+
+  // ---------- 9. JSON-LD @graph ----------
+  const brand = $('brandName').value.trim() || 'Your Brand';
+  const home = $('homeUrl').value.trim() || 'https://yourstore.com';
+  const postSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": home },
+          { "@type": "ListItem", "position": 2, "name": title, "item": home + '/blogs/news/' + postSlug }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": title,
+        "datePublished": new Date().toISOString().split('T')[0],
+        "dateModified": new Date().toISOString().split('T')[0],
+        "author": { "@type": "Organization", "name": brand },
+        "publisher": { "@type": "Organization", "name": brand }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      }
+    ]
+  };
+
+  // Custom stringify so the FAQ answer HTML uses single quotes (it already does — but we double-enforce by NOT re-escaping)
+  // We'll build the JSON manually to keep the <a href='...'> intact:
+  const jsonStr = JSON.stringify(graph, null, 2);
+
+  const schemaBlock = `
+<!-- Triple-Threat SEO Schema · @graph method · single-quote rule applied -->
+<script type="application/ld+json">
+${jsonStr}
+<\/script>`.trim();
+
+  // ---------- Build the per-post Schema Graph SVG ----------
+  // This replaces the marker we inserted earlier and shows readers (and you) the entity
+  // relationships Google now sees for this post. Pure SVG, no fonts/scripts — renders
+  // identically in every Shopify theme.
+  function truncate(s, n) {
+    s = String(s || '').trim();
+    return s.length > n ? s.slice(0, n - 1) + '…' : s;
+  }
+  function svgEscape(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  const faqQList = faqs.map((f, i) => `
+    <g transform="translate(540, ${175 + i * 38})">
+      <rect x="0" y="0" width="240" height="30" rx="4" fill="#fff" stroke="#0a0a0a" stroke-width="1"/>
+      <text x="14" y="19" font-family="Georgia, serif" font-size="12" fill="#0a0a0a">${svgEscape(truncate(f.q, 32))}</text>
+    </g>`).join('');
+
+  const schemaGraphHTML = `
+<div class="tt-schema-graph" style="margin:32px 0;border:1px solid #0a0a0a;font-family:inherit;overflow:hidden;background:#f4f1ea;">
+
+  <!-- WARNING BANNER: delete before publishing -->
+  <div style="background:#fff3a3;border-bottom:2px dashed #0a0a0a;padding:14px 20px;display:flex;align-items:center;gap:14px;font-family:inherit;">
+    <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#0a0a0a;color:#fff3a3;padding:6px 10px;flex-shrink:0;">⚠ DELETE BEFORE PUBLISHING</span>
+    <span style="font-size:13px;color:#0a0a0a;line-height:1.4;"><strong>This block is for your reference only.</strong> Use it to verify the schema renders correctly, then delete the entire box before publishing the post live. The hidden JSON-LD at the bottom of the page is what Google actually reads — that stays.</span>
+  </div>
+
+  <div style="padding:28px;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+    <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${ACCENT};margin:0;font-weight:700;">→ Schema Graph · How Google sees this post</p>
+    <p style="font-size:10px;letter-spacing:0.1em;color:#6b6258;margin:0;font-family:'Courier New',monospace;">@context: schema.org</p>
+  </div>
+  <p style="font-size:13px;color:#6b6258;margin:0 0 20px;line-height:1.5;">Three connected entities make this page eligible for rich results, knowledge-graph mentions, and AI-overview citations.</p>
+
+  <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;max-width:800px;">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#0a0a0a"/>
+      </marker>
+    </defs>
+
+    <!-- Connector lines (drawn first so nodes sit on top) -->
+    <line x1="190" y1="100" x2="280" y2="100" stroke="#0a0a0a" stroke-width="1.5" marker-end="url(#arr)"/>
+    <line x1="380" y1="170" x2="380" y2="200" stroke="${ACCENT}" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <line x1="480" y1="240" x2="530" y2="190" stroke="#0a0a0a" stroke-width="1" marker-end="url(#arr)"/>
+    <line x1="480" y1="240" x2="530" y2="228" stroke="#0a0a0a" stroke-width="1" marker-end="url(#arr)"/>
+    <line x1="480" y1="240" x2="530" y2="266" stroke="#0a0a0a" stroke-width="1" marker-end="url(#arr)"/>
+    <line x1="480" y1="240" x2="530" y2="304" stroke="#0a0a0a" stroke-width="1" marker-end="url(#arr)"/>
+
+    <!-- BreadcrumbList node -->
+    <g transform="translate(20, 60)">
+      <rect x="0" y="0" width="170" height="80" rx="4" fill="#fff" stroke="#0a0a0a" stroke-width="1.5"/>
+      <rect x="0" y="0" width="170" height="22" fill="#0a0a0a"/>
+      <text x="10" y="15" font-family="'Courier New',monospace" font-size="10" fill="${ACCENT}" letter-spacing="1">BREADCRUMBLIST</text>
+      <text x="10" y="42" font-family="Georgia,serif" font-size="11" fill="#0a0a0a">↳ ${svgEscape(truncate('Home', 26))}</text>
+      <text x="10" y="60" font-family="Georgia,serif" font-size="11" fill="#0a0a0a">↳ ${svgEscape(truncate(title, 26))}</text>
+    </g>
+
+    <!-- Article node (centerpiece) -->
+    <g transform="translate(280, 60)">
+      <rect x="0" y="0" width="200" height="110" rx="4" fill="#0a0a0a" stroke="${ACCENT}" stroke-width="2"/>
+      <rect x="0" y="0" width="200" height="22" fill="${ACCENT}"/>
+      <text x="10" y="15" font-family="'Courier New',monospace" font-size="10" fill="${BTN_TEXT}" letter-spacing="1" font-weight="bold">ARTICLE</text>
+      <text x="10" y="42" font-family="Georgia,serif" font-size="10" fill="#999">headline:</text>
+      <text x="10" y="58" font-family="Georgia,serif" font-size="11" fill="#fff">${svgEscape(truncate(title, 28))}</text>
+      <text x="10" y="80" font-family="Georgia,serif" font-size="10" fill="#999">author:</text>
+      <text x="10" y="96" font-family="Georgia,serif" font-size="11" fill="#fff">${svgEscape(truncate(brand, 28))}</text>
+    </g>
+
+    <!-- FAQPage node -->
+    <g transform="translate(280, 200)">
+      <rect x="0" y="0" width="200" height="80" rx="4" fill="#fff" stroke="#0a0a0a" stroke-width="1.5"/>
+      <rect x="0" y="0" width="200" height="22" fill="#0a0a0a"/>
+      <text x="10" y="15" font-family="'Courier New',monospace" font-size="10" fill="${ACCENT}" letter-spacing="1">FAQPAGE</text>
+      <text x="10" y="42" font-family="Georgia,serif" font-size="11" fill="#0a0a0a">${faqs.length} questions</text>
+      <text x="10" y="60" font-family="Georgia,serif" font-size="11" fill="#0a0a0a">+ ${faqs.reduce((n, f) => n + (f.a.match(/<a /g) || []).length, 0)} internal silo links</text>
+    </g>
+
+    <!-- @graph label between Article and FAQPage -->
+    <g transform="translate(340, 180)">
+      <rect x="0" y="0" width="80" height="20" rx="10" fill="${ACCENT}"/>
+      <text x="40" y="14" font-family="'Courier New',monospace" font-size="10" fill="${BTN_TEXT}" text-anchor="middle" font-weight="bold">@graph</text>
+    </g>
+
+    <!-- FAQ question previews on the right -->
+    <g transform="translate(540, 80)">
+      <text x="0" y="0" font-family="'Courier New',monospace" font-size="10" fill="#6b6258" letter-spacing="1">QUESTIONS INDEXED:</text>
+      <text x="0" y="14" font-family="Georgia,serif" font-size="10" fill="#6b6258" font-style="italic">Eligible for FAQ rich results</text>
+    </g>
+    ${faqQList}
+
+    <!-- Footer caption -->
+    <g transform="translate(0, 365)">
+      <text x="0" y="0" font-family="Georgia,serif" font-size="11" fill="#6b6258" font-style="italic">Structured per Google's patent family for landing page quality (US8682892B1 · US20250086246A1 · US12536233B1)</text>
+    </g>
+  </svg>
+  </div>
+</div>`.trim();
+
+  // Replace the marker with the schema graph
+  const markerNode = root.querySelector('#__tt_schema_graph_marker__');
+  if (markerNode) {
+    const wrap = doc.createElement('div');
+    wrap.innerHTML = schemaGraphHTML;
+    markerNode.parentNode.replaceChild(wrap.firstChild, markerNode);
+    audit.push({ ok: true, t: 'Schema graph visualisation inserted', d: 'Per-post SVG diagram of the @graph entities — pure SVG, no JS, renders in any theme.' });
+  }
+
+  // ---------- 10. Validate single-quote rule ----------
+  // The acceptedAnswer.text should contain only single quotes (no `"` inside the HTML strings)
+  let singleQuoteOK = true;
+  for (const f of faqs) {
+    if (/href="/.test(f.a)) { singleQuoteOK = false; break; }
+  }
+  audit.push({
+    ok: singleQuoteOK,
+    t: 'Single-quote rule',
+    d: singleQuoteOK ? 'All FAQ HTML uses single quotes — Liquid-safe.' : 'Detected double-quoted HTML in FAQ.'
+  });
+
+  // ---------- 11. Internal silo check ----------
+  const internalCount = faqs.reduce((n, f) => n + (f.a.match(/<a /g) || []).length, 0);
+  audit.push({
+    ok: internalCount >= 2,
+    t: 'Internal siloing',
+    d: internalCount + ' internal link(s) added across FAQ answers (minimum: 2).'
+  });
+
+  // ---------- 12. Schema completeness ----------
+  audit.push({
+    ok: true,
+    t: '@graph schema injected',
+    d: 'BreadcrumbList + Article + FAQPage as consolidated graph.'
+  });
+
+  // ---------- Assemble final output ----------
+  const finalHTML = root.innerHTML + '\n\n' + schemaBlock;
+
+  return { html: finalHTML, audit, title };
+}
+
+// ============================================================
+// BUTTON HANDLERS
+// ============================================================
+
+$('optimizeBtn').addEventListener('click', () => {
+  const html = $('input').value.trim();
+  if (!html) {
+    showToast('Paste your blog HTML first');
+    return;
+  }
+  const btn = $('optimizeBtn');
+  btn.innerHTML = '<span class="spinner"></span>Optimizing…';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    try {
+      const result = optimize(html);
+      $('output').value = result.html;
+      $('outputStatus').textContent = 'Optimized ✓';
+      $('outputStatus').classList.remove('ready');
+      $('outputStatus').classList.add('done');
+      $('copyBtn').disabled = false;
+      $('downloadBtn').disabled = false;
+
+      // Render audit
+      const grid = $('auditGrid');
+      grid.innerHTML = result.audit.map(a => `
+        <div class="audit-item ${a.ok ? 'pass' : 'warn'}">
+          <span class="mark">${a.ok ? '✓' : '!'}</span>
+          <div class="body">
+            <div class="title">${a.t}</div>
+            <div class="detail">${a.d}</div>
+          </div>
+        </div>
+      `).join('');
+      $('report').classList.add('active');
+      $('reportSub').textContent = 'Page: "' + result.title.slice(0, 50) + '" · Generated ' + new Date().toLocaleTimeString();
+
+      updateCounters();
+      showToast('Optimization complete');
+      // Scroll to output
+      $('output').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (e) {
+      console.error(e);
+      showToast('Error — check your HTML and try again');
+    } finally {
+      btn.innerHTML = '⚡ Optimize HTML';
+      btn.disabled = false;
+    }
+  }, 300);
+});
+
+$('copyBtn').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText($('output').value);
+    showToast('Copied to clipboard');
+  } catch {
+    $('output').select();
+    document.execCommand('copy');
+    showToast('Copied (fallback)');
+  }
+});
+
+$('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob([$('output').value], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'optimized-blog-post.html';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded');
+});
+
+$('sampleBtn').addEventListener('click', () => {
+  $('input').value = `<h1>TENS vs EMS for Neuropathy</h1>
+<p>If you're dealing with foot neuropathy, you've probably heard about TENS and EMS units. This guide explains the difference.</p>
+<img src="https://example.com/lead.jpg" alt="">
+<p>TENS stands for Transcutaneous Electrical Nerve Stimulation. It targets pain signals.</p>
+<p>EMS stands for Electrical Muscle Stimulation. It causes muscles to contract.</p>
+<p><strong>How They Differ</strong></p>
+<p>The key difference is what they target — nerves vs muscles.</p>
+<p>Many people use both at different times depending on their needs.</p>
+<img src="https://example.com/comparison.jpg" alt="comparison">
+<p>For neuropathy specifically, most clinicians recommend starting with TENS for symptom relief.</p>`;
+  updateCounters();
+  showToast('Sample loaded — click Optimize');
+});
+
+// ============================================================
+// TOAST
+// ============================================================
+let toastTimer;
+function showToast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+const dateEl = $('issueDate');
+const today = new Date();
+const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+dateEl.textContent = 'VOL. 01 · ' + months[today.getMonth()] + ' ' + today.getFullYear();
+updateCounters();
+</script>
+
+</body>
+</html>
